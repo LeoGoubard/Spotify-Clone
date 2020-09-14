@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { loginUrl } from '../spotify';
+import { loginUrl } from '../../spotify';
 import './Login.css';
 
 
