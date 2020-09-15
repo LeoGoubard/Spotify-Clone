@@ -29,12 +29,38 @@ function App() {
 
       spotify.setAccessToken(_token);
 
-      spotify.getMe().then(user => {
+      spotify.getMe().then((user) => {
 
         dispatch({
           type: 'SET_USER',
           user,
         });
+      });
+
+      spotify.getUserPlaylists().then((playlists) =>{
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playlists,
+        });
+      });
+
+      spotify.getPlaylist("6yIL2LE2Cu4ipAiyEm7Az9").then((response) =>
+      dispatch({
+        type: "SET_DISCOVER_WEEKLY",
+        discover_weekly: response,
+      })
+      );
+
+      spotify.getMyTopArtists().then((response) =>
+        dispatch({
+          type: "SET_TOP_ARTISTS",
+          top_artists: response,
+        })
+      );
+
+      dispatch({
+        type: "SET_SPOTIFY",
+        spotify,
       });
     }
 
